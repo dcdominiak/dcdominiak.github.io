@@ -6,7 +6,7 @@ layout: "default"
 <body>
   {% for post in site.posts %}
     <p>
-      {{ page.date | date: "%B %-d, %Y" }}<br/>
+      {{ post.date | date: "%B %-d, %Y" }}<br/>
       <a href="{{ post.url }}">{{ post.title }}</a><br/>
       {{ post.excerpt }}
     </p>
