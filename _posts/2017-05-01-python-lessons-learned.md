@@ -12,7 +12,7 @@ Before I started the Udacity Artificial Intelligence Nanodegree, I had relativel
 
 Variables are scoped to functions, not to blocks within functions. A function introduced in a `with` or `for` block remains in scope for the remainder of the function. This is different than many languages such as Java or Swift.
 
-{% highlight python %}
+{% highlight python tabsize=4 %}
 def my_function():
 	for i in range(10):
 		if i == 0:
