@@ -22,10 +22,10 @@ def a_function:
 
 $$ 5 + 5 $$
 
+This is an inline equation: \\( sin(x^2) \\). It's in the middle of a paragraph.
+
 $$
 
-\begin{displaymath}
-\sum_{n=0}^{\infty}a_n x^n
-\end{displaymath}
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}
 
 $$
