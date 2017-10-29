@@ -24,8 +24,14 @@ $$ 5 + 5 $$
 
 This is an inline equation: \\( sin(x^2) \\). It's in the middle of a paragraph.
 
+{% raw %}
 $$
-
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}
-
 $$
+{% endraw %}
+
+{% raw %}
+$$
+x = {-b pm sqrt{b^2-4ac} over 2a}
+$$
+{% endraw %}
