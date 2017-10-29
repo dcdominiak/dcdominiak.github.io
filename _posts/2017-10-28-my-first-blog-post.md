@@ -31,3 +31,9 @@ $$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}
 $$
 {% endraw %}
+
+{% raw %}
+$$
+\sum_{n=0}^{\infty}a_n x^n
+$$
+{% endraw %}
