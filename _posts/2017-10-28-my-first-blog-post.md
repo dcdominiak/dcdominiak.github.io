@@ -7,6 +7,8 @@ layout: "default"
 
 # My First Blog Post
 
+{{ page.date | date_to_long_string }}
+
 My first blog post!
 
 ## Some Code
