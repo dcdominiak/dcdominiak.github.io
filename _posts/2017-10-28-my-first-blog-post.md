@@ -1,6 +1,7 @@
 ---
 layout: post
 title: My First Blog Post
+excerpt: "My first blog post!"
 layout: "default"
 ---
 
