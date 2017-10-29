@@ -4,4 +4,13 @@ title: My First Blog Post
 layout: "default"
 ---
 
+# My First Blog Post
+
 My first blog post!
+
+## Some Code
+
+{% highlight python %}
+def a_function:
+	pass
+{% endhighlight %}
