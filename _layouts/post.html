@@ -5,4 +5,8 @@ title: This is just a placeholder post
 
 <h1>{{ post.title }}</h1>
 
+<p>
+  {{ post.date | date: "%B %-d, %Y" }}
+</p>
+
 {{ content }}
