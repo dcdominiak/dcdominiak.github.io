@@ -7,7 +7,7 @@ layout: "default"
 
 # My First Blog Post
 
-{{ page.date | date_to_long_string }}
+{{ page.date | date: "%B %-d, %Y" }}
 
 My first blog post!
 
