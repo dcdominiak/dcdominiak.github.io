@@ -4,10 +4,6 @@ excerpt: "My first blog post!"
 layout: post
 ---
 
-# My First Blog Post
-
-{{ page.date | date: "%B %-d, %Y" }}
-
 My first blog post!
 
 ## Some Code
