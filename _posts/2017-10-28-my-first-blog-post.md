@@ -17,3 +17,15 @@ My first blog post!
 def a_function:
 	pass
 {% endhighlight %}
+
+## An Equation
+
+$$ 5 + 5 $$
+
+$$
+
+\begin{displaymath}
+\sum_{n=0}^{\infty}a_n x^n
+\end{displaymath}
+
+$$
