@@ -68,8 +68,45 @@ Variables are scoped to functions, not to blocks within functions. A function in
 
 ```python
 def my_function():
-	for i in range(10):
-		if i == 0:
-			flag = True
-	print(flag)
+	for item in items:
+		if item == target_value:
+			found_item = True
+	print(found_item)
+```
+
+### Return multiple values from a function
+
+It's trivial to have a function return multiple values: use a tuple.
+
+```python
+x, y, z = my_function()
+```
+
+### Walk through list elements in reverse order
+
+Python's array indexing syntax can be used to access the elements of a list in reverse order:
+
+```python
+a = [1, 2, 3]
+for item in a[::-1]:
+	print(item)
+```
+
+Technically, this creates a view into the original list where the elements are reversed. Changing values in the original list will also change the view. If you want to permanently reverse the order, use `a.reverse()`.
+
+Don't try to parse the syntax `a[::-1]` in the form start:stop:step, though. What does a step of -1 mean? This is one of those idiomatic expressions in the language.
+
+### Object-oriented programming with Python
+
+Python supports a mechanism for defining classes of objects, creating instances of those classes and calling methods on those instances, otherwise known as object-oriented programming.
+
+```python
+class MyClass(object):
+	def __init__(self):
+		self._instance_var_1 = []
+		self._instance_var_2 = 0
+
+	def compute_something_useful(self, var2):
+		self._instance_var_2 = var2
+		return self._instance_var_2 * self._instance_var_2
 ```
