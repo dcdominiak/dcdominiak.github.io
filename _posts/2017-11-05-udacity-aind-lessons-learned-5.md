@@ -19,7 +19,9 @@ The output tokens are converted back into word strings and those word strings ar
 
 ### Word embeddings make all the difference
 
-Inputting word tokens directly into a neural network works, but not very well. The reason is that the integer tokens don't have a natural ordering, e.g. "Mountain" (7657) is not greater than "drive" (2332) in any sense.
+Using a word embedding layer in the neural network increases the performance of the network.
+
+Inputting word tokens directly into a neural network works, but not very well. The reason is that the integer tokens don't have a natural ordering like, say, housing prices. The word "Mountain" with integer token 7657 is not greater than "drive" with token 2332 in any sense.
 
 The next logical thing to do is use one-hot encodings of the work tokens, e.g. [0 0 0 0 1 ... 0 0 0 ]. But with tens or hundreds of thousands of words in the vocabulary, the weight matrix for a one-hot encoded input layer become very large and, since most of the matrix values are zero, very inefficient to compute with.
 
