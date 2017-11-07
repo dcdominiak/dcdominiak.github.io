@@ -1,5 +1,5 @@
 ---
-title: Python Lessons Learned During AIND
+title: "Python Lessons Learned During AIND"
 excerpt: "Python lessons learned during Udacity Artificial Intelligence Nanodegree."
 layout: post
 ---

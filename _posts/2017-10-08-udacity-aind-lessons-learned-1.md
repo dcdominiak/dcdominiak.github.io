@@ -58,9 +58,9 @@ In this project, I built a game playing agent for a simple board game called Iso
 
 ### How to frame the problem of building a game agent
 
-In order to build a good agent, you need to model a tree of hypothetical moves from the player you're controlling and the opponent. Each node in the tree is a game board configuration (where the game pieces are placed), and each edge represents moving one player piece according to the rules of the game. The tree isn't preconstructed, but built up on the fly, as needed to evaluate possible moves.
+In order to build a good agent, you need to model a tree of hypothetical moves from the player you're controlling and the opponent. Each node in the tree is a game board configuration (describing where the game pieces are placed at that point in the game), and each edge represents moving one player piece according to the rules of the game. The tree isn't preconstructed, but built up on the fly, as needed to evaluate possible moves.
 
-A typical evaluation goes something like this: OK, I have 4 possible moves. Let's try to the first move. If I make that move, my opponent will make this move. Then I'll have 2 possible moves to counter that move. Let's try the first counter move. If I make that first move, I'll have lost the game. Make a note of that. Now let's try the second counter move...
+A typical evaluation goes something like this: OK, I have 4 possible moves. Let's try the first move. If I make that move, my opponent will make this move. Then I'll have 2 possible moves to counter my opponent's move. Let's try the first counter move. If I make that first move, I'll have lost the game. Make a note of that. Now let's try the second counter move...
 
 Having a tree data structure allows the agent to easily back up to a certain move in the sequence of hypothetical moves and try a different move.
 
