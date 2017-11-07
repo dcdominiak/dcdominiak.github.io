@@ -1,5 +1,5 @@
 ---
-title: Lessons Learned During Udacity AIND, Part 1: Solving Puzzles, Game Playing Agents
+title: "Lessons Learned During Udacity AIND, Part 1: Solving Puzzles, Game Playing Agents"
 excerpt: "Part 1 of lessons learned during Udacity Artificial Intelligence Nanodegree covers the first part of Term 1."
 layout: post
 ---
