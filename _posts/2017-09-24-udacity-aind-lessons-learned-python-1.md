@@ -1,5 +1,5 @@
 ---
-title: "Python Lessons Learned During AIND"
+title: "Python Lessons Learned During Udacity AIND"
 excerpt: "Python lessons learned during Udacity Artificial Intelligence Nanodegree."
 layout: post
 ---
@@ -53,6 +53,16 @@ A list comprehension can be used to create a dictionary.
 x = { x: y for x in range(10) for y in range(10) }
 ```
 
+### List comprehension instead of nested for loops
+
+A list comprehension can be used in place of nested for loops.
+
+```python
+# Generate a list of all possible triplets
+bases = ['U', 'C', 'A', 'G']
+codons = [a + b + c for a in bases for b in bases for c in bases]
+```
+
 ### Reading elements of an array with enumerate()
 
 The `enumerate()` built-in function allows you to loop through the elements of an array and get both the index and the element value.
@@ -96,7 +106,11 @@ Technically, this creates a view into the original list where the elements are r
 
 Don't try to parse the syntax `a[::-1]` in the form start:stop:step, though. What does a step of -1 mean? This is one of those idiomatic expressions in the language.
 
-### Object-oriented programming with Python
+### Don't forget the built-in functions
+
+`all()` `min()` `max()`
+
+### Python supports object-oriented programming
 
 Python supports a mechanism for defining classes of objects, creating instances of those classes and calling methods on those instances, otherwise known as object-oriented programming.
 
