@@ -4,9 +4,11 @@ excerpt: "Part 2 of Python lessons learned during Udacity Artificial Intelligenc
 layout: post
 ---
 
+NumPy is a numerical computing library for Python that's so ubiquitous it feels as if it's part of the language. When developing machine learning applications, it's often necessary to rely on NumPy for certain things even if you're using a high-level library like TensorFlow or Keras.
+
 ### NumPy functions can be applied to every element in a list or array
 
-If you apply a NumPy function like `exp()` to a Python list, it applies the function to every element in the list, automatically. No looping is necessary.
+If you apply a NumPy function like `np.exp()` to a Python list, it applies the function to every element in the list, automatically. No looping is necessary.
 
 ```python
 L = [ 0.3, 0.5, 0.2 ]
@@ -15,7 +17,9 @@ np.exp(L)
 
 Same is true for a NumPy array, of course.
 
-### Extract parts of NumPy arrays by slicing them with X[start:stop:step]
+### Extract parts of NumPy arrays by _slicing_ them
+
+NumPy supports slicing of n-dimensional arrays with the syntax X[start:stop:step].
 
 ```python
 X[:10]  # the first 10 elements of X
@@ -48,4 +52,10 @@ The NumPy function `np.random.rand()` can return a vector or matrix of random nu
 np.random.rand(3)     # row vector (1x3)
 np.random.rand(3, 1)  # column vector (3x1)
 np.random.rand(3, 3)  # matrix (3x3)
+```
+
+### Compare elements of two vectors
+
+```python
+predictions = [np.argmax(model.predict(np.expand_dims(feature, axis=0))) for feature in test_InceptionV3]
 ```

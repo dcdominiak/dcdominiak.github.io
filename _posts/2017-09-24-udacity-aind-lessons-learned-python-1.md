@@ -110,6 +110,16 @@ Don't try to parse the syntax `a[::-1]` in the form start:stop:step, though. Wha
 
 `all()` `min()` `max()`
 
+# Build or split a file path
+
+The `os.path` module can be used to either build a file path from a directory path and a filename, or extract the filename from a path.
+
+```python
+full_path = 'logs/log-1.log'
+path, filename = os.path.split(full_path)
+full_path = os.path.join(path, filename)
+```
+
 ### Python supports object-oriented programming
 
 Python supports a mechanism for defining classes of objects, creating instances of those classes and calling methods on those instances, otherwise known as object-oriented programming.

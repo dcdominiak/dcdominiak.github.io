@@ -25,9 +25,11 @@ Inputting word tokens directly into a neural network works, but not very well. T
 
 The next logical thing to do is use one-hot encodings of the work tokens, e.g. [0 0 0 0 1 ... 0 0 0 ]. But with tens or hundreds of thousands of words in the vocabulary, the weight matrix for a one-hot encoded input layer become very large and, since most of the matrix values are zero, very inefficient to compute with.
 
-Best practice is to use a word embedding. A word embedding maps a word token to a "dense" vector with typically 100-300 dimensions. It effectively replaces the one-hot encoding vector with one of fewer dimensions, hundreds instead of tens or hundreds of thousands. In practice, the integer word token is fed directly to the network and used to look up the corresponding embedding vector, and that embedding vector is fed into subsequent layers of the neural network.
+Best practice is to use a word embedding. A word embedding maps a word token to a "dense" vector with typically 100-300 dimensions. It effectively replaces the one-hot encoding vector with one of fewer dimensions, hundreds instead of tens or hundreds of thousands.
 
-The word embeddings can be learned along with the rest of the neural network model, or a pre-trained embedding can be used. In the machine translation project, the word embeddings were learned during training. A vector of length 128 was chosen and performed well.
+In practice, the integer word token is fed to the network and used to look up the corresponding embedding vector, and that embedding vector is fed into subsequent layers of the neural network.
+
+The word embeddings can be learned along with the rest of the neural network model, or a pre-trained set of embeddings can be used. In the machine translation project, the word embeddings were learned during training. A vector of length 128 was chosen and performed well.
 
 ### Output is only a prediction for the next word in the sentence
 

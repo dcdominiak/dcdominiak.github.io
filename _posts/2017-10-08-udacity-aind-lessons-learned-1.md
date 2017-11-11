@@ -10,7 +10,7 @@ Part 1: Solving Puzzles, Game Playing Agents (this post)
 Part 2: Planning, Natural Language Recognition
 Part 3: Deep Learning with Convolutional Neural Networks, Recurrent Neural Networks
 Part 4: Interesting Deep Learning Applications
-Part 5: Capstone Project - Machine Translation
+Part 5: NLP Capstone Project - Machine Translation
 
 [Udacity Artificial Intelligence Nanodegree home page](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889)<br/>
 [AIND Term 1 Syllabus](https://medium.com/udacity/ai-nanodegree-program-syllabus-term-1-in-depth-80c41297acaf)<br/>
