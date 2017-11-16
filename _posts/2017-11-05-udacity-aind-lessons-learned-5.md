@@ -9,13 +9,14 @@ layout: post
 To use a neural network for machine translation, build a network that takes as input a vector of integer word tokens from the source dictionary and outputs a vector of word tokens from the target dictionary. The source and target dictionaries can be different sizes.
 
 For example:
-
+{% raw %}
 $$
 \begin{align}
 input = \begin{bmatrix} 5 & 20 & 21 & 1 & 8 & 60 & 4 & 36 & 7 & 3 & 1 & 8 & 56 & 2 & 45 \end{bmatrix} \\
 output = \begin{matrix} 4 & 32 & 31 & 1 & 8 & 65 & 2 & 43 & 6 & 3 & 1 & 8 & 21 & 2 & 51 \end{bmatrix}
 \end{align}
 $$
+{% endraw %}
 
 Typically we're given a sentence string as input. First step is to split it into words. We can't input words as text strings to a neural network, though; we can only input numbers. How do we get these numbers? Build a tokenizer that splits a sentence into words and assigns a unique integer value to each word in the vocabulary. For example, if the vocabulary has 10,000 unique words in it, the tokenizer assigns an integer in the range 1-10,000. (The token 0 is typically reserved for zero-padding the sequences.)
 
