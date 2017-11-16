@@ -12,7 +12,7 @@ For example:
 {% raw %}
 $$
 input = \begin{bmatrix} 5 & 20 & 21 & 1 & 8 & 60 & 4 & 36 & 7 & 3 & 1 & 8 & 56 & 2 & 45 \end{bmatrix} \\
-output = \begin{matrix} 4 & 32 & 31 & 1 & 8 & 65 & 2 & 43 & 6 & 3 & 1 & 8 & 21 & 2 & 51 \end{bmatrix}
+output = \begin{bmatrix} 4 & 32 & 31 & 1 & 8 & 65 & 2 & 43 & 6 & 3 & 1 & 8 & 21 & 2 & 51 \end{bmatrix}
 $$
 {% endraw %}
 
