@@ -61,10 +61,10 @@ An encoder-decoder neural network architecture is best practice for many sequenc
 ### Resources
 
 The Jupyter Notebook for the machine translation project is available on GitHub:<br/>
-[](https://github.com/udacity/aind2-nlp-capstone)
+[https://github.com/udacity/aind2-nlp-capstone](https://github.com/udacity/aind2-nlp-capstone)
 
 A popular word embeddings library, word2vec, was created by Google. word2vec introduced the Skip-gram model for learning word embeddings from source text. word2vec source code from Google (C code):<br/>
-[](https://code.google.com/archive/p/word2vec/)
+[https://code.google.com/archive/p/word2vec/](https://code.google.com/archive/p/word2vec/)
 
 Jupyter Notebook teaching a TensorFlow-based implementation of the word2vec algorithm for word embeddings is available from the Udacity Deep Learning Foundation program:</br>
-[](https://github.com/udacity/deep-learning/tree/master/embeddings)
+[https://github.com/udacity/deep-learning/tree/master/embeddings](https://github.com/udacity/deep-learning/tree/master/embeddings)
