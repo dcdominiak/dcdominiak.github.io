@@ -11,8 +11,8 @@ To use a neural network for machine translation, build a network that takes as i
 For example:
 
 $$
-input =  \bmatrix{ 5 & 20 & 21 & 1 & 8 & 60 & 4 & 36 & 7 & 3 & 1 & 8 & 56 & 2 & 45 } \\
-output = \bmatrix{ 4 & 32 & 31 & 1 & 8 & 65 & 2 & 43 & 6 & 3 & 1 & 8 & 21 & 2 & 51 }
+input =  \matrix{ 5 & 20 & 21 & 1 & 8 & 60 & 4 & 36 & 7 & 3 & 1 & 8 & 56 & 2 & 45 } \\
+output = \matrix{ 4 & 32 & 31 & 1 & 8 & 65 & 2 & 43 & 6 & 3 & 1 & 8 & 21 & 2 & 51 }
 $$
 
 Typically we're given a sentence string as input. First step is to split it into words. We can't input words as text strings to a neural network, though; we can only input numbers. How do we get these numbers? Build a tokenizer that splits a sentence into words and assigns a unique integer value to each word in the vocabulary. For example, if the vocabulary has 10,000 unique words in it, the tokenizer assigns an integer in the range 1-10,000. (The token 0 is typically reserved for zero-padding the sequences.)
