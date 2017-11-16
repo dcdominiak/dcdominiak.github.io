@@ -14,7 +14,7 @@ In this project, I designed a system to plan the movement of air cargo from airp
 
 Everyone has an intuitive understanding of the act of planning and the resulting plan. A plan is a list of actions to perform to achieve a goal. Maybe the actions are performed one after the other, maybe in any order. Planning is the act of creating the list of actions.
 
-Computer scientists define a graph where nodes represent states of the world (well, typically a very small subset of it) and edges represent actions to perform when in that state. One node in the graph (usually the root) is the initial state and one is the goal state. Planning is running an algorithm that searches the graph to find the node that represents the goal state.
+To tackle the planning problem, computer scientists define a graph where nodes represent states of the world (well, typically a very small subset of it) and edges represent actions to perform when in that state. One node in the graph (usually the root) is the initial state and one is the goal state. Planning is running an algorithm that searches the graph to find the node that represents the goal state.
 
 In the air cargo example, a state describes the location of all the planes and all the packages. The initial state is the location of the planes and packages after all the day's deliveries have been collected from customers, and the goal state has each package at its destination city.
 
@@ -24,9 +24,9 @@ Planning is searching the graph to find a path from the initial state (root node
 
 ### A* search algorithm is best practice for planning
 
-The A* search algorithm is the go-to algorithm for search in planning problems. It finds the lowest-cost path from among all possible paths, and does it in an efficient way. At each node, it searches the possible paths from that node to the goal, starting from the most promising one, the one that is estimated to have the least cost. All possible paths are searched in order from least estimated cost to greatest. The search proceeds recursively down each possible path, building up a tree of paths.
+The A* search algorithm is the go-to algorithm for search in planning problems. It finds the lowest-cost path from among all possible paths, and does so in an efficient way. At each node, it searches the possible paths from that node to the goal, starting from the most promising one, the one that is estimated to have the least cost. All possible paths are searched in order from least estimated cost to greatest. The search proceeds recursively down each possible path, building up a tree of paths.
 
-The cost estimate used by the A* algorithm is generated using a heuristic. The heuristic is a measure of the path cost that's relatively inexpensive to calculate and that doesn't require the search to continue in order to generate. An example heuristic is using the straight line distance between two cities in a route planning system. While no roads actually traverse that straight line exactly, it's a good estimate of the distance to that city. (An more importantly, it's an _admissible_ estimate: it never overestimates the true cost.)
+The cost estimate used by the A* algorithm is generated using a heuristic. The heuristic is a measure of the path cost that's relatively inexpensive to calculate and that doesn't require the search to continue in order to generate. An example heuristic in a route planning system is using the straight line distance between two cities. While no roads actually traverse that straight line exactly, it's a good estimate of the distance to that city. And more importantly, it's an _admissible_ estimate: it never overestimates the true cost.
 
 ### How to frame the logistics planning problem
 
