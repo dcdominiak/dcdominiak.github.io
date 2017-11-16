@@ -78,7 +78,7 @@ For a more "creative" text generator, instead of taking the most likely characte
 NumPy `random.choice` is an easy way to sample from a probability distribution. For our simple 3 character example:
 
 ```python
-np.random.choice(3, p=[ 0.75, 0.16, 0.09 ])`
+np.random.choice(3, p=[ 0.75, 0.16, 0.09 ])
 ```
 
 ### Generate training examples for text generator neural network using a sliding window
@@ -100,7 +100,8 @@ In this project I trained the network using 100,000 characters for 30 epochs, wi
 ### Resources
 
 The Jupyter Notebook for the Udacity AIND text generator project is available on GitHub:<br/>
-https://github.com/udacity/aind2-rnn
+[https://github.com/udacity/aind2-rnn](https://github.com/udacity/aind2-rnn
+)
 
 Project Gutenberg: _The Adventures of Sherlock Holmes_<br/>
 [http://www.gutenberg.org/ebooks/1661](http://www.gutenberg.org/ebooks/1661)<br/>
