@@ -30,7 +30,7 @@ X[10:]  # the rest of X starting with element 11 (index 10)
 
 Use `np.squeeze(X, axis=0)` to remove single-dimensional entries from the shape of an array.
 
-Suppose X = [ [1], [7], [6], [3] ], or an array of single-dimensional arrays. Applying `squeeze()` collapes the array-of-arrays into the array [ 1, 7, 6, 3 ].
+Suppose X = [ [1], [7], [6], [3] ], or an array of single-dimensional arrays. Applying `squeeze()` collapses the array-of-arrays into the array [ 1, 7, 6, 3 ].
 
 `np.squeeze()` is the opposite of `np.expand_dims()`. See next.
 

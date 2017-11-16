@@ -53,6 +53,14 @@ A list comprehension can be used to create a dictionary.
 x = { x: y for x in range(10) for y in range(10) }
 ```
 
+### List comprehension instead of a for loop
+
+A list comprehension is often used instead of a for loop as it's more compact. For example, it can be used to compute the error vector when training a neural network:
+
+```python
+output_error = [y[i] - y_hat[i] for i in range(len(y))]
+```
+
 ### List comprehension instead of nested for loops
 
 A list comprehension can be used in place of nested for loops.
