@@ -24,7 +24,7 @@ Transfer learning is ideal for small dataset projects, as it allows you to lever
 
 The transfer learning process is:
   * Select an appropriate deep CNN architecture and obtain a pre-trained model
-  * Slice off the top -- the fully connected layers used for classification) -- of the pre-trained neural network
+  * Slice off the top -- the fully connected layers used for classification -- of the pre-trained neural network
   * Add a new fully connected layer where the number of neurons matches the number of classes in the new data set (133 dog breeds in this case)
   * Randomize the weights of the new fully connected layer, while freezing all the weights from the pre-trained network
   * Train the network to optimize the weights of the new fully connected layer
@@ -33,13 +33,15 @@ The transfer learning process is:
 
 In practice, transfer learning is implemented a bit differently. A "shallow" network is built that includes only an input layer and a classification layer. This shallow network is then trained with the so-called _bottleneck features_ of the pre-trained network instead of the training images. Here's how it works:
 
-  * Use the pre-trained network to compute the bottleneck features for your training set.
+  * Use the pre-trained network to compute the bottleneck features for the training set.
     * For each image in your training set, input that image into the pre-trained network and compute the output of the topmost CNN layer (not the output of the network's softmax classification layer, but an internal, intermediate output). This gives the bottleneck features for each image in the training set.
   * Train the shallow network using these bottleneck features as input.
-    * Each training example is a multi-dimensional vector, or tensor, rather than an image. As an example, the tensor could have dimensions, aka shape, of (7, 7, 512).
-    * Use a categorical crossentropy loss function during training
+    * Each training example is now a multi-dimensional vector, or tensor, rather than an image. As an example, the tensor could have dimensions, aka shape, of (7, 7, 512).
+    * Use a categorical crossentropy loss function during training.
 
-Specifically, for each image, the corresponding bottleneck feature vector is input to the neural network instead of the image itself. The bottleneck features can be thought of as an encoding of the image that's richer than the raw pixel values, allowing more performance from a single fully connected layer than would otherwise be possible.
+The difference from the build-your-own deep neural network approach bears repeating. During training, each image is replaced with its pre-computed bottleneck feature vector. The bottleneck features can be thought of as an encoding of the image that's richer than the raw pixel values, allowing more performance from a single fully connected layer than would otherwise be possible.
+
+The same holds true when the neural network is used to classify images. Each new image must first be run through the pre-trained deep neural network to compute its bottleneck feature vector. (With a deep network of 50 layers or more, this is not a trivial computation.)
 
 ### Libraries like Keras have implementations of successful CNN architectures
 
@@ -47,9 +49,7 @@ The deep learning library Keras used in this project supports the CNN architectu
 
 ### Tune the "shallow" network to the training set
 
-To optimize the transfer learning architecture, some tweaks were made to the basic recipe to tune the number of parameters in the "shallow" neural network to the size of the dataset.
-
-There were 6,680 images in the training set.
+To optimize the transfer learning architecture, some tweaks were made to the basic recipe to tune the number of parameters in the "shallow" neural network to the size of the dataset. (There were 6,680 images in the training set.)
 
 A global average pooling, or GAP, layer was placed immediately on top of the output of the pre-trained deep network. This had the effect of dramatically reducing the complexity (number of weights) of the network. In addition, a droput "layer" was added between the GAP layer and the fully connected 133-neuron softmax classifier layer. 20% dropout was used during training.
 
@@ -73,7 +73,13 @@ To use a neural network for text generation, build a network that takes as input
 
 To start generating characters using the generator, select an initial of sequence of characters and compute the output distribution for the next character. Take the most likely character and record it as the first output character. Then append it to the input sequence and feed the new sequence into the neural network. Get the output probability distribution and select the most likely character. Repeat the process until you've got the desired number of characters. You can generate a sentence, a paragraph or an entire novel!
 
-For a more "creative" text generator, instead of taking the most likely character each time, select a character by sampling from the probability distribution output by the neural network. For example, 'e' might have probability 0.75, but 'f' and 'h' could be non-zero with probabilities 0.16 and 0.09. Instead of always selecting 'e' in this case, draw a random number uniformly distributed between 0 and 1 and use it to decide on the next character. NumPy `random.choice` does this for you, `np.random.choice(3, p=[ 0.75, 0.16, 0.09 ])` in our simple 3 character example.
+For a more "creative" text generator, instead of taking the most likely character each time, select a character by sampling from the probability distribution output by the neural network. For example, 'e' might have probability 0.75, but 'f' and 'h' could be non-zero with probabilities 0.16 and 0.09. Instead of always selecting 'e' in this case, draw a random number uniformly distributed between 0 and 1 and use it to decide on the next character.
+
+NumPy `random.choice` is an easy way to sample from a probability distribution. For our simple 3 character example:
+
+```python
+np.random.choice(3, p=[ 0.75, 0.16, 0.09 ])`
+```
 
 ### Generate training examples for text generator neural network using a sliding window
 
@@ -81,7 +87,11 @@ Consider the text, "It was a quarter past six when we left Baker Street". Let's 
 
 ### Tuning a neural network's hyperparameters is necessary for good performance
 
-The 
+It's essential to understand and tune the neural network's hyperparameters.
+
+First, a clarification. The deep learning community lumps together two disparate things as hyperparameters: architectural parameters and training parameters. A hyperparameter of a neural network model is essentially anything that is configurable that isn't a weight involved in the computation of a neuron's output. For example, the size of the hidden state vector in an RNN and the training batch size are both hyperparameters, even though from an engineering point of view, these are two very different things.
+
+Some key hyperparameters for the text generator are size of the RNN hidden state vector, the choice of optimizer and the learning rate for that optimizer.
 
 ### Training a text generator neural network takes a long time and requires a lot of data
 
@@ -89,9 +99,9 @@ In this project I trained the network using 100,000 characters for 30 epochs, wi
 
 ### Resources
 
+The Jupyter Notebook for the Udacity AIND text generator project is available on GitHub:<br/>
 https://github.com/udacity/aind2-rnn
 
 Project Gutenberg: _The Adventures of Sherlock Holmes_<br/>
-http://www.gutenberg.org/ebooks/1661<br/>
+[http://www.gutenberg.org/ebooks/1661](http://www.gutenberg.org/ebooks/1661)<br/>
 The copyright on Doyle's famous work is long expired and the text of the book is freely available from Project Gutenberg.
-
