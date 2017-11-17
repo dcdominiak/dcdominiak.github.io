@@ -12,25 +12,47 @@ In this project, I designed a system to plan the movement of air cargo from airp
 
 ### What computer scientists mean by planning
 
-Everyone has an intuitive understanding of the act of planning and the resulting plan. A plan is a list of actions to perform to achieve a goal. Maybe the actions are performed one after the other, maybe in any order. Planning is the act of creating the list of actions.
+Everyone has an intuitive understanding of the act of planning and the resulting plan. A plan is a list of actions to perform to achieve a goal. Maybe the actions must be performed one after the other, maybe they can be performed in any order. Planning is the act of creating the list of actions.
 
-To tackle the planning problem, computer scientists define a graph where nodes represent states of the world (well, typically a very small subset of it) and edges represent actions to perform when in that state. One node in the graph (usually the root) is the initial state and one is the goal state. Planning is running an algorithm that searches the graph to find the node that represents the goal state.
+To tackle the planning problem, computer scientists define a graph where nodes represent states of the world (well, typically a very small subset of it) and edges represent actions possible when in that state. One node in the graph (usually the root) is the initial state and one is the goal state. Planning is running an algorithm that searches the graph to find a node that represents the goal state. The plan is the path to that node.
 
-In the air cargo example, a state describes the location of all the planes and all the packages. The initial state is the location of the planes and packages after all the day's deliveries have been collected from customers, and the goal state has each package at its destination city.
+In the air cargo example, a state describes the location of all the planes and all the cargo containers. The initial state is the location of the planes and containers after all the day's deliveries have been collected from customers, and the goal state has each cargo container at its destination city.
 
 ### How to frame the general planning problem
 
-Planning is searching the graph to find a path from the initial state (root node) to the goal state. The goal state is not a node, but a set of criteria for evaluating nodes. Any node that meets the criteria can be selected as the final node in the path. The plan is the path found by the search algorithm. Clearly the search strategy matters a great deal.
+Planning is searching the state space graph to find a path from the initial state (root node) to the goal state. The goal state is not necessarily one specific node, but a set of criteria for evaluating nodes. Any node that meets the criteria can be selected as the final node in the path. There may be many that meet the criteria. The plan is the path found by the search algorithm. Clearly the search strategy matters a great deal.
 
 ### A* search algorithm is best practice for planning
 
-The A* search algorithm is the go-to algorithm for search in planning problems. It finds the lowest-cost path from among all possible paths, and does so in an efficient way. At each node, it searches the possible paths from that node to the goal, starting from the most promising one, the one that is estimated to have the least cost. All possible paths are searched in order from least estimated cost to greatest. The search proceeds recursively down each possible path, building up a tree of paths.
+The A* search algorithm is the go-to algorithm for search in planning problems.
+
+The A* algorithm finds the lowest-cost path from among all possible paths, and does so in an efficient way. At each node, it searches the possible paths from that node to the goal, starting from the most promising one, the one that is estimated to have the least cost. All possible paths are searched in order from least estimated cost to greatest. The search proceeds recursively down each possible path, building up a tree of paths.
 
 The cost estimate used by the A* algorithm is generated using a heuristic. The heuristic is a measure of the path cost that's relatively inexpensive to calculate and that doesn't require the search to continue in order to generate. An example heuristic in a route planning system is using the straight line distance between two cities. While no roads actually traverse that straight line exactly, it's a good estimate of the distance to that city. And more importantly, it's an _admissible_ estimate: it never overestimates the true cost.
 
 ### How to frame the logistics planning problem
 
-Unlike with vehicular route planning, the state space for a logistics planning problem is large, complicated and much more abstract.
+In the simplified air cargo logistics problem considered for this project, the world consists of cargo containers, planes and airports. You have a set of cargo containers staged at various airport around the country, you have a set of airplanes staged at various airports, and you need to fly each container to its proper destination airport in the most efficient way possible.
+
+Start by formally defining a state. A state is a current or desired state of the world, such as plane P1 at airport SFO and cargo container C1 at airport ORD. In software, a state is described using propositional logic. Only two propositions were needed to solve this simplified problem: At(plane, airport) and In(cargo, plane).
+
+Next, define the initial state of the world and a goal state in terms of propositions. For example, the goal state might be At(C1, JFK), At(C2, SFO), At(C3, SFO). In words, the goal is to find a state in the state space in which cargo container C1 is at airport JFK and cargo containers C2 and C3 are at airport SFO.
+
+Once the initial and goal states have been defined, create a graph of state nodes. The initial state becomes the root node. Finally, it's time to search. Logistics planning involves searching the state space graph for a path from the initial state to a suitable goal state. The path represents a set of actions, which is our plan.
+
+### Actions are transitions between states
+
+The state space for a logistics planning problem is large and complicated and so the graph is built on the fly, as needed during execution of the search algorithm. The graph is built up by connecting state nodes with other nodes via actions.
+
+To extend the graph forward from a node (state), we need to know what states can be reached from that state. Another state can be reached if there's an action to get us there. For the air cargo logistic problems, 3 actions are defined: load cargo (onto a plane), unload cargo and fly plane (from one city to another). These actions define what states connect to other states.
+
+With a propositional logic state space, an action has to be described in a bit of a roundabout manner. Because each state is described in terms of propositions, an action also has to be described with propositions.
+
+How to describe an action with propositions? An action is described by the effects it has on the current state, in other words, by its result. Let's look at a specific example.
+
+Cargo container C1 is in plane P1 and plane P1 is at airport SFO. The 'Unload(C1, P1, SFO)' action results in the state cargo container C1 at airport SFO (and plane P1 at the airport SFO, still). In the new state, the cargo container is at the airport, no longer in the plane.
+
+While it's a bit tedious to describe the actions in terms of propositions, it's a powerful general-purpose mechanism as it permits a domain-independent search algorithm to be implemented, which is a huge benefit.
 
 ## American Sign Language Recognizer
 
