@@ -26,7 +26,7 @@ x_prev, y_prev = x, y
 
 ### Conditional assignment with compact syntax
 
-Python supports a conditional expression which allows you to perform a conditional assignement with a compact syntax. For example, instead of this:
+Python supports a conditional expression which allows you to perform a conditional assignment with a compact syntax. For example, instead of this:
 
 ```python
 if output == correct_output:
@@ -41,16 +41,29 @@ you can write the assignment with the more compact syntax:
 is_correct_string = 'Yes' if output == correct_output else 'No'
 ```
 
+### Reading elements of an array with enumerate()
+
+The `enumerate()` built-in function allows you to loop through the elements of an array and get both the index and the element value.
+
+```python
+for i, val in enumerate(x):
+	x[i] = alpha * val
+```
+
 ### Creating a list (array) with a list comprehension
 
 One of the iconic features of Python -- and one of the most _Pythonic_ -- is the list comprehension.
+
+```python
+[source_int_to_letter[i] for i in text]
+```
 
 ### Creating a dictionary with a list comprehension
 
 A list comprehension can be used to create a dictionary.
 
 ```python
-x = { x: y for x in range(10) for y in range(10) }
+int_to_vocab = { index: word for index, word in enumerate(list(vocab_words)) }
 ```
 
 ### List comprehension instead of a for loop
@@ -71,18 +84,9 @@ bases = ['U', 'C', 'A', 'G']
 codons = [a + b + c for a in bases for b in bases for c in bases]
 ```
 
-### Reading elements of an array with enumerate()
-
-The `enumerate()` built-in function allows you to loop through the elements of an array and get both the index and the element value.
-
-```python
-for i, val in enumerate(x):
-	x[i] = alpha * val
-```
-
 ### Variables are scoped to functions
 
-Variables are scoped to functions, not to blocks within functions. A function introduced in a `with` or `for` block remains in scope for the remainder of the function. This is different than many languages such as Java or Swift.
+Variables are scoped to functions, not to blocks within functions. A function introduced in a `with` or `for` block remains in scope for the remainder of the function. This is different than many languages such as C, Java or Swift.
 
 ```python
 def my_function():
@@ -118,7 +122,7 @@ Don't try to parse the syntax `a[::-1]` in the form start:stop:step, though. Wha
 
 `all()` `min()` `max()`
 
-# Build or split a file path
+### Build or split a file path
 
 The `os.path` module can be used to either build a file path from a directory path and a filename, or extract the filename from a path.
 
