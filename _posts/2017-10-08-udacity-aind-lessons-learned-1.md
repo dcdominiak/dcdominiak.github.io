@@ -49,7 +49,7 @@ How do you write an efficient search algorithm? Use constraint propagation. Cons
 
 An example of constraint propagation for Sudoku is simply following one of the rules of the puzzle: the digits 1-9 must appear exactly once. For a given state, find a square with only one possible value, then remove that value from the possible values of each of the square's 8 neighbors. Recall that in Sudoku, each square has 3 sets of neighbors: the 3x3 grid, the 9-square row and the 9-square column. The constraint is propagated to each set of neighbors.
 
-How well does constraint propagation work in this case? In [Peter Norvig's analysis](http://norvig.com/sudoku.html), the hardest Sudoku puzzles require searching only 64 board configurations (on average over the set of hard puzzles) out of the 10^38 or so. That's so much better than the brute force approach it's staggering.
+How well does constraint propagation work in this case? In [Peter Norvig's analysis](http://norvig.com/sudoku.html), the hardest Sudoku puzzles require searching only 64 board configurations (on average over the set of hard puzzles) out of the $$10^38$$ or so. That's so much better than the brute force approach it's staggering.
 
 
 ## Adversarial Game Playing Agent
