@@ -6,10 +6,10 @@ layout: post
 
 The Udacity Artificial Intelligence Nanodegree, or AIND for short, is a wide-ranging program that teaches you how to build AI systems. After buidling a Sudoku puzzle solver as a warm-up, it starts with a game playing agent for a simple (contrived) board game and ends with English-to-French neural network-based machine translation. In a series of posts, I will recount some of my key lessons learned and takeaways from the program.
 
-Part 1: Solving Puzzles, Game Playing Agents (this post)
-Part 2: Planning, Natural Language Recognition
-Part 3: Deep Learning with Convolutional Neural Networks, Recurrent Neural Networks
-Part 4: Interesting Deep Learning Applications
+Part 1: Solving Puzzles, Game Playing Agents (this post)<br/>
+Part 2: Planning, Natural Language Recognition<br/>
+Part 3: Deep Learning with Convolutional Neural Networks, Recurrent Neural Networks<br/>
+Part 4: Interesting Deep Learning Applications<br/>
 Part 5: NLP Capstone Project - Machine Translation
 
 [Udacity Artificial Intelligence Nanodegree home page](https://www.udacity.com/course/artificial-intelligence-nanodegree--nd889)<br/>
