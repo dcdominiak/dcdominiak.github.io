@@ -4,7 +4,7 @@ excerpt: "Part 3 of lessons learned during Udacity Artificial Intelligence Nanod
 layout: post
 ---
 
-In the third part of the Udacity Artificial Intelligence lessons learned series, I'll cover convolutional neural networks (CNNs) and recurrent neural networks (RNNs), two neural network architectures that are optimized for specific tasks.
+In the third part of the Udacity Artificial Intelligence Nanodegree lessons learned series, I'll cover convolutional neural networks (CNNs) and recurrent neural networks (RNNs), two neural network architectures that are optimized for specific tasks.
 
 ## Convolutional Neural Networks
 

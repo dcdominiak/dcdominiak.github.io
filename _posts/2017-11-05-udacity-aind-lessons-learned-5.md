@@ -4,7 +4,7 @@ excerpt: "Part 5 of lessons learned during Udacity Artificial Intelligence Nanod
 layout: post
 ---
 
-In the fifth part of the Udacity Artificial Intelligence lessons learned series, I'll cover the natural language processing (NLP) concentration, one of three that the student can choose. I choose NLP because I find it amazing that software can make sense of written language using word IDs that have no semantic meaning. It doesn't seem like it should work, but it does.
+In the fifth part of the Udacity Artificial Intelligence Nanodegree lessons learned series, I'll cover the natural language processing (NLP) concentration, one of three that the student can choose. I choose NLP because I find it amazing that software can make sense of written language using word IDs that have no semantic meaning. It doesn't seem like it should work, but it does.
 
 ### How to frame the machine translation problem
 
