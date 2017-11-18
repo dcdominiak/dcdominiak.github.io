@@ -4,19 +4,31 @@ excerpt: "Part 3 of lessons learned during Udacity Artificial Intelligence Nanod
 layout: post
 ---
 
+In the third part of the Udacity Artificial Intelligence lessons learned series, I'll cover convolutional neural networks (CNNs) and recurrent neural networks (RNNs), two neural network architectures that are optimized for specific tasks.
+
 ## Convolutional Neural Networks
 
 ### How to think about the filtering done by the layers of a CNN
 
-The first layer of a convolution neural network performs a set of convolutional filtering operations on the input image, one for each feature map. The exact type of filter in each case is not dictated as in a traditional image processing system but is learned by the network. What about the higher layers?
+The first layer of a convolution neural network performs a set of convolutional filtering operations on the input image, one for each feature map. The resulting filtered image is typically the same size as the input image. The exact type of filter used in each case is not dictated as in a traditional image processing system, but is learned by the neural network during training.
 
-Suppose the input to a CNN is a 228x228 color image. A filter in the first layer with a 3x3 kernel filters a 9x9 grid of pixels in the input image across three color channels:
+That's the first layer in a CNN. How should we think about the higher layers?
 
+Suppose the input to a CNN is a 228x228 color image. A filter in the first layer with a 3x3 kernel filters a grid of 9 pixels in the input image across three color channels:
+
+{% raw %}
+$$
 neuron = w_r * red_channel_filter() + w_g * greeen_channel_filter() + w_b * blue_channel_filter()
+$$
+{% endraw %}
 
 Suppose further the second to last convolutional layer is 7x7x512. A filter in the final layer then takes as input a 7x7 downsampled “image” with 512 channels. Unlike the first convolutional layer where the channels were color channels in the input image, these channels are the outputs of filters in the previous layer and it's quite difficult to put nice labels on them. But the computation is similar. Each neuron outputs a single value:
 
-neuron = channel_1_filter(3x3) + channel_2_filter(3x3) + … + channel_512_filter(3x3)
+{% raw %}
+$$
+neuron = w_1 * channel_1_filter(3x3) + w_2 * channel_2_filter(3x3) + … + w_512 * channel_512_filter(3x3)
+$$
+{% endraw %}
 
 A filter’s output “pixels” are called its activation map, and each CNN layer contains many such maps.
 
@@ -61,6 +73,8 @@ The hidden state vector is computed via a weight matrix multiplication, and each
 ### An RNN learns a single function that gets applied at each time step
 
 Rather than learning a specific function for each time step, the RNN learns a general function that gets applied at all time steps.
+
+The implications of this simple fact are huge. What is the RNN actually learning? It's learning how to compute its hidden state vector to store information about past inputs in a way that allows it to correctly generate future outputs. It typically has 100s of dimensions with which to work, but the use of each dimension is not clear cut. Analysis has shown that recognizable "features" are often linear combinations of dimensions.
 
 ### An RNN is equivalent to an entire hidden layer in a neural network
 

@@ -54,7 +54,7 @@ How well does constraint propagation work in this case? In [Peter Norvig's analy
 
 ## Adversarial Game Playing Agent
 
-In this project, I built a game playing agent for a simple board game called Isolation. It explored "adversarial search," which is a short way of saying "an agent in a two-player game that determines the player's next move by searching through the set of possible moves and evaluating each one in turn, taking into account the likely opponent counter-moves."
+In this project, I built a game playing agent for a simple board game called Isolation. It explored "adversarial search," which is a short way of saying "an agent in a two-player game that determines the player's next move by searching through the set of possible moves, evaluating each one in turn, taking into account the likely opponent counter-moves, and finally selecting the best move from among the possible moves."
 
 ### How to frame the problem of building a game agent
 
