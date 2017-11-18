@@ -8,9 +8,11 @@ In the third part of the Udacity Artificial Intelligence Nanodegree lessons lear
 
 ## Convolutional Neural Networks
 
+A convolutional neural network is a neural network specialized for processing an image. While CNNs have seen other uses, image processing, and in particular image recognition, has drawn the most attention because of the excellent results that have been obtained.
+
 ### How to think about the filtering done by the layers of a CNN
 
-The first layer of a convolution neural network performs a set of convolutional filtering operations on the input image, one for each feature map. The resulting filtered image is typically the same size as the input image. The exact type of filter used in each case is not dictated as in a traditional image processing system, but is learned by the neural network during training.
+The first layer of a convolution neural network performs a set of convolutional filtering operations on the input image, one for each feature map. The resulting filtered image is typically the same size as the input image. The exact type of filter used in each case is not fixed as in a traditional image processing system, but is learned by the neural network during training.
 
 Higher layers work the same way, but with two notable differences. First, there are many more filters in each layer. And second, the input "images" are no longer the original RGB image but are (heavily) filtered and downsampled versions of the original.
 
@@ -31,6 +33,27 @@ $$
 {% endraw %}
 
 A filter's output “pixels” are called its activation map, and each CNN layer contains many such maps.
+
+### Strategy for constructing a deep CNN
+
+A fairly straightforward strategy has emerged for constructing deep CNNs. As you move from lower layers to higher layers, downsample the spatial "image" while increasing the number of separate filters that get applied. As we've seen, higher layers see an input image with smaller spatial dimensions but dramatically more channels, e.g. 512 instead of just 3 (red, green, blue).
+
+Taking VGG-16 as an example:
+
+  * Start with input image 224x224x3
+  * First set of layers computes 64 feature maps that are each 224x224
+  * Downsample with max pooling (2x2)
+  * Second set of layer computes 128 feature maps that are each 112x112
+  * Downsample with max pooling (2x2)
+  * Third set of layers computes 256 feature maps that are each 56x56
+  * Downsample with max pooling (2x2)
+  * Fourth set of layers computes 512 feature maps that are each 28x28
+  * Downsample with max pooling (2x2)
+  * Fifth set of layers computes 512 feature maps that are each 14x14
+  * Downsample with max pooling (2x2)
+  * Flatten 7x7x512 neuron "volume" to a length 25,088 1D vector
+  * Sixth set of layers are fully-connected with 4,096 neurons
+  * Output layer is specialized to the task at hand, e.g. one neuron per class for classification task
 
 ### Strategy for dropout during training of a CNN
 
