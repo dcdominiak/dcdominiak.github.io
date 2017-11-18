@@ -18,7 +18,7 @@ Suppose the input to a CNN is a 228x228 color image. A filter in the first layer
 
 {% raw %}
 $$
-neuron = w_r * red_channel_filter() + w_g * greeen_channel_filter() + w_b * blue_channel_filter()
+neuron = w_r * redChannelFilter() + w_g * greeenChannelFilter() + w_b * blueChannelFilter()
 $$
 {% endraw %}
 
@@ -26,7 +26,7 @@ Suppose further the second to last convolutional layer is 7x7x512. A filter in t
 
 {% raw %}
 $$
-neuron = w_1 * channel_1_filter(3x3) + w_2 * channel_2_filter(3x3) + … + w_512 * channel_512_filter(3x3)
+neuron = w_1 * channel1Filter(3x3) + w_2 * channel2Filter(3x3) + … + w_512 * channel512Filter(3x3)
 $$
 {% endraw %}
 
