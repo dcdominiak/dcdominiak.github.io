@@ -26,7 +26,7 @@ Suppose further the second to last convolutional layer is 7x7x512. A filter in t
 
 {% raw %}
 $$
-neuron = w_1 * channel1Filter(3x3) + w_2 * channel2Filter(3x3) + … + w_512 * channel512Filter(3x3)
+neuron = w_1 * channel1Filter(3x3) + w_2 * channel2Filter(3x3) + … + w_{512} * channel512Filter(3x3)
 $$
 {% endraw %}
 
