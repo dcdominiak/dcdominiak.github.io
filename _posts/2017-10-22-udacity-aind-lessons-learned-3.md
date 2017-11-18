@@ -12,9 +12,9 @@ In the third part of the Udacity Artificial Intelligence lessons learned series,
 
 The first layer of a convolution neural network performs a set of convolutional filtering operations on the input image, one for each feature map. The resulting filtered image is typically the same size as the input image. The exact type of filter used in each case is not dictated as in a traditional image processing system, but is learned by the neural network during training.
 
-That's the first layer in a CNN. How should we think about the higher layers?
+Higher layers work the same way, but with two notable differences. First, there are many more filters in each layer. And second, the input "images" are no longer the original RGB image but are (heavily) filtered and downsampled versions of the original.
 
-Suppose the input to a CNN is a 228x228 color image. A filter in the first layer with a 3x3 kernel filters a grid of 9 pixels in the input image across three color channels:
+Suppose the input to a CNN is a 228x228 color image. A filter in the first layer with a 3x3 kernel filters a grid of 9 pixels in the input image across three color channels (red, green, blue). There are 228x228 neurons (no downsampling yet). Each neuron applies this same filter and outputs a single value::
 
 {% raw %}
 $$
@@ -22,7 +22,7 @@ neuron = w_r * redChannelFilter() + w_g * greeenChannelFilter() + w_b * blueChan
 $$
 {% endraw %}
 
-Suppose further the second to last convolutional layer is 7x7x512. A filter in the final layer then takes as input a 7x7 downsampled “image” with 512 channels. Unlike the first convolutional layer where the channels were color channels in the input image, these channels are the outputs of filters in the previous layer and it's quite difficult to put nice labels on them. But the computation is similar. Each neuron outputs a single value:
+Now let's look at the final convolutional layer. Say the input to this convolutional layer is 7x7x512 (compared to 228x228x3 for the input layer). This means a filter in the final layer takes as input a 7x7 downsampled “image” with 512 channels. Unlike the first convolutional layer where the channels were color channels in the input image, these channels are the outputs of filters in the previous layer and it's quite difficult to put nice labels on them (though that hasn't stopped researchers from trying). But the computation is similar. Each neuron outputs a single value:
 
 {% raw %}
 $$
@@ -30,7 +30,7 @@ neuron = w_1 * channel1Filter(3x3) + w_2 * channel2Filter(3x3) + … + w_{512} *
 $$
 {% endraw %}
 
-A filter’s output “pixels” are called its activation map, and each CNN layer contains many such maps.
+A filter's output “pixels” are called its activation map, and each CNN layer contains many such maps.
 
 ### Strategy for dropout during training of a CNN
 
@@ -40,13 +40,13 @@ Why does this strategy work well? As dropout zeros out some neurons, it limits t
 
 ### Leverage pretrained model using transfer learning
 
-Transfer learning is a technique common in image classification systems whereby a pretrained deep neural network model is used as the lower layers of the new, custom network. The top layer of the pretrained model, typically a fully-connected layer with a softmax output, is replaced with one or more fully-connected layers. During training, only the weights of the new top layers are learned. The weights of the pretrained model stay fixed.
+Transfer learning is a technique common in image classification systems whereby a pretrained deep neural network model is used as the lower layers of the new, custom network. The top layer of the pretrained model, typically a fully-connected layer with a softmax output, is replaced with one or more fully-connected layers customized to the task at hand (such as recognizing appliances in images of home interiors). During training, only the weights of the new top layers are learned. The weights of the pretrained model stay fixed.
 
 Why does this architecture work well? The pretrained network has learned a set of features that are generally useful in image classification tasks. The new top layers are trained to combine those features to classify images into the new set of categories.
 
 ### Precompute bottleneck features to use during training of the new model
 
-To recap, best practice is transfer learning to arrive at the architecture for an image classifier:
+To recap, best practice architecture for an image classifier is to use transfer learning if at all possible:
 
   * Take a freely available, pretrained image classification deep neural network,
   * Remove its classification layer, then
