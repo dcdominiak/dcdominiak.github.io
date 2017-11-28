@@ -54,25 +54,25 @@ How well does constraint propagation work in this case? In [Peter Norvig's analy
 
 ## Adversarial Game Playing Agent
 
-In this project, I built a game playing agent for a simple board game called Isolation. It explored the technique "adversarial search," which is a short way of saying "a way of building an agent in a two-player game that determines the player's next move by searching through the set of possible moves, evaluating each one in turn, taking into account the likely opponent counter-moves, and finally selecting the best move from among the possible moves."
+In this project, I built a game playing agent for a simple board game called Isolation. It explored the technique "adversarial search," which is a short way of saying "a way of building an agent for a two-player game that determines the player's next move by searching through the set of possible moves, evaluating each one in turn, taking into account the likely opponent counter-moves, and finally selecting the best move from among the possible moves."
 
 ### How to frame the problem of building a game agent
 
-In order to build a good agent for this type of game, you first need a way to model and score a sequence of hypothetical moves for the player you're controlling, and the opponent. Then, when it's your player's turn, you need to find a good next move by finding a good sequence of moves that's "unlocked" by making that first good move. (There's no guarantee that you'll get to make all those moves, of course.)
+In order to build a good agent for this type of game, you first need a way to model and score a sequence of hypothetical moves for the player you're controlling, and the opponent. Then, when it's your player's turn, you need to find a good next move by finding a good sequence of moves that's "unlocked" by making that first good move. (There's no guarantee you'll get to make all those moves, of course.)
 
-The sequence of moves is modeled as a tree. Each node in the tree is a game board configuration, describing where the game pieces are placed at that point in the game, and each edge represents moving one player piece according to the rules of the game. The tree isn't preconstructed, but built up on the fly as needed to evaluate possible moves.
+The set of all move sequences is modeled as a tree. Each node in the tree is a game board configuration, describing where the game pieces are placed at that point in the game, and each edge represents moving one player piece according to the rules of the game. The tree isn't preconstructed, but built up on the fly as needed to evaluate possible moves. A  particular sequence of moves is a path through the tree.
 
-Each sequence of moves is given a score. The score is determined by calculating the _utility_ of the game board configuration that results after making all the moves in the sequence. The move sequence with the highest score is chosen, and the first move in that top-scoring sequence is chosen as your player's next move.
+Each sequence of moves is given a score. The score is determined by calculating the _utility_ of the game board configuration that results after making all the moves in the sequence. The move sequence with the highest score is selected, and the first move in that top-scoring sequence is chosen as your player's next move.
 
 The way to think about utility is to answer the question, "How likely is the player to win the game with that board configuration as the starting point?" If the chances of winning are good, that board has high utility; otherwise its utility is low.
-
-A typical move selection goes something like this: OK, I have 4 possible moves. Let's try the first move. If I make that move, my opponent will make this move. Then I'll have 2 possible moves to counter my opponent's move. Let's try the first counter move. If I make that first move, I'll have lost the game. Make a note of that. Now let's try the second counter move...
-
-Having a tree data structure allows the agent to easily back up to a certain move in the sequence of hypothetical moves and try a different move.
 
 ### Why search is fundamental to game agents
 
 A game playing agent selects its next move by trying out all possible (legal) moves, predicting the opponent's countermove to each, then trying out all possible moves that counter those opponent moves, and so on. Why is this called search? What exactly is being searched? The technique searches the game state space, which for a board game such as Isolation is the set of board configurations.
+
+A typical move selection goes something like this: OK, I have 4 possible moves. Let's try the first move. If I make that move, my opponent will make this move. Then I'll have 2 possible moves to counter my opponent's move. Let's try the first counter move. If I make that first move, I'll have lost the game. Make a note of that. Now let's try the second counter move...
+
+Having a tree data structure allows the agent to easily back up to a certain move in the sequence of hypothetical moves and try a different move.
 
 Note that the game of Isolation has been carefully crafted to have a much smaller state space than that of chess. There are only two game pieces, one for each player. The game pieces move as chess knights, but each move changes the game board in a way that can't be reversed, dramatically limiting the number of possible moves and ensuring a clear winner for each game.
 
