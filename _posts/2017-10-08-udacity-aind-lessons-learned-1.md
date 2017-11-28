@@ -35,7 +35,7 @@ The goal was to create an algoritm that searches through possible board configur
 
 ### Why optimized search is needed
 
-Even a simple puzzle like Sudoku contains a staggering number of possible board (puzzle) configurations: 4.6 x 10^38! With a large state space, eliminating large portions of it is essential. This can be done by eliminating portions that aren't expected to yield a solution, or, in the case of Sudoku, are known not to contain the solution. An optimized search is absolutely necessary, and isn't too hard to define.
+Even a simple puzzle like Sudoku contains a staggering number of possible board (puzzle) configurations: on the order of $$10^{38}$$! With such a large state space, eliminating large portions of it is essential. This can be done by eliminating portions that aren't expected to yield a solution, or, in the case of Sudoku, are known not to contain the solution (because the rules of the puzzle are broken, such as having two 8's). An optimized search is absolutely necessary, and isn't too hard to define.
 
 ### Use depth-first as systematic search strategy
 
@@ -49,7 +49,7 @@ How do you write an efficient search algorithm? Use constraint propagation. Cons
 
 An example of constraint propagation for Sudoku is simply following one of the rules of the puzzle: the digits 1-9 must appear exactly once. For a given state, find a square with only one possible value, then remove that value from the possible values of each of the square's 8 neighbors. Recall that in Sudoku, each square has 3 sets of neighbors: the 3x3 grid, the 9-square row and the 9-square column. The constraint is propagated to each set of neighbors.
 
-How well does constraint propagation work in this case? In [Peter Norvig's analysis](http://norvig.com/sudoku.html), the hardest Sudoku puzzles require searching only 64 board configurations (on average over the set of hard puzzles) out of the $$10^{38}$$ or so. That's so much better than the brute force approach it's staggering.
+How well does constraint propagation work in this case? In [Peter Norvig's analysis](http://norvig.com/sudoku.html), the hardest Sudoku puzzles require searching only 64 board configurations (on average over the set of hard puzzles) out of the $$10^{38}$$ or so. That's so much better than the brute force approach!
 
 
 ## Adversarial Game Playing Agent
