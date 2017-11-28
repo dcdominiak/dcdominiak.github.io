@@ -58,7 +58,7 @@ In this project, I built a game playing agent for a simple board game called Iso
 
 ### How to frame the problem of building a game agent
 
-In order to build a good agent for this type of game, you first need a way to model and score a sequence of hypothetical moves for the player you're controlling, and the opponent. Then, when it's your player's turn, you need to find a good next move by finding a good sequence of moves that's "unlocked" by making that first good move. (There's no guarantee you'll get to make all those moves, of course.)
+In order to build a good agent for this type of game, you first need a way to model and score a sequence of hypothetical moves for the player you're controlling, and the opponent. Then, when it's your player's turn, you find a good next move by finding a good sequence of moves that's "unlocked" by making that first good move. (There's no guarantee you'll get to make all those moves, of course.)
 
 The set of all move sequences is modeled as a tree. Each node in the tree is a game board configuration, describing where the game pieces are placed at that point in the game, and each edge represents moving one player piece according to the rules of the game. The tree isn't preconstructed, but built up on the fly as needed to evaluate possible moves. A  particular sequence of moves is a path through the tree.
 
