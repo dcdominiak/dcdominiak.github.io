@@ -50,12 +50,20 @@ for i, val in enumerate(x):
 	x[i] = alpha * val
 ```
 
-### Creating a list (array) with a list comprehension
+### List comprehension instead of a for loop to create a list (array)
 
-One of the iconic features of Python -- and one of the most _Pythonic_ -- is the list comprehension.
+One of the iconic features of Python -- and one of the most _Pythonic_ -- is the list comprehension. A list comprehension is typically used to create a list instead of a for loop, as it's more compact.
+
+For example, it can be used to compute the error vector when training a neural network:
 
 ```python
-[source_int_to_letter[i] for i in text]
+output_error = [ y[i] - y_hat[i] for i in range(len(y)) ]
+```
+
+Or it can be used to encode a character string using a tokenizer:
+
+```python
+encoded_input = [ vocab_to_int[i] for i in text ]
 ```
 
 ### Creating a dictionary with a list comprehension
@@ -66,22 +74,14 @@ A list comprehension can be used to create a dictionary.
 int_to_vocab = { index: word for index, word in enumerate(list(vocab_words)) }
 ```
 
-### List comprehension instead of a for loop
-
-A list comprehension is often used instead of a for loop as it's more compact. For example, it can be used to compute the error vector when training a neural network:
-
-```python
-output_error = [y[i] - y_hat[i] for i in range(len(y))]
-```
-
 ### List comprehension instead of nested for loops
 
 A list comprehension can be used in place of nested for loops.
 
 ```python
 # Generate a list of all possible triplets
-bases = ['U', 'C', 'A', 'G']
-codons = [a + b + c for a in bases for b in bases for c in bases]
+bases = [ 'U', 'C', 'A', 'G' ]
+codons = [ a + b + c for a in bases for b in bases for c in bases ]
 ```
 
 ### Variables are scoped to functions
@@ -104,6 +104,12 @@ It's trivial to have a function return multiple values: use a tuple.
 x, y, z = my_function()
 ```
 
+If you don't need all the return values, ignore one or more with `_`:
+
+```python
+x, y, _ = my_function()
+```
+
 ### Walk through list elements in reverse order
 
 Python's array indexing syntax can be used to access the elements of a list in reverse order:
@@ -120,7 +126,9 @@ Don't try to parse the syntax `a[::-1]` in the form start:stop:step, though. Wha
 
 ### Don't forget the built-in functions
 
-`all()` `min()` `max()`
+The built-in function `all()` returns `True` if all elements of a list are true; `any()` returns `True` if any elements are true.
+
+`min()` and `max()` can be used in cases where NumPy isn't being imported, otherwise the NumPy equivalents are available.
 
 ### Build or split a file path
 
